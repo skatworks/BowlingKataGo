@@ -15,7 +15,10 @@ func (game *Game) GetScore() int {
      frameIndex := 0
 
      for frame := 0; frame < 10; frame++ {
-         if game.rolls[frameIndex] + game.rolls[frameIndex + 1] == 10 {
+         if game.rolls[frameIndex] == 10 {
+            score += 10 + game.rolls[frameIndex + 1] + game.rolls[frameIndex + 2]
+            frameIndex += 1
+         } else if game.rolls[frameIndex] + game.rolls[frameIndex + 1] == 10 {
             score += 10 + game.rolls[frameIndex + 2]
             frameIndex += 2
          } else {

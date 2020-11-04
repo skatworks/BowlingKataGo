@@ -24,6 +24,21 @@ func TestSpare(t *testing.T) {
      ResultCheck(game.GetScore(), 20, t)
 }
 
+func TestStrike(t *testing.T) {
+     game := Game{}
+     game.Roll(10)
+     game.Roll(3)
+     game.Roll(4)
+     RollMany(17, 0, &game)
+     ResultCheck(game.GetScore(), 24, t)
+}
+
+func TestPerfect(t *testing.T) {
+     game := Game{}
+     RollMany(12, 10, &game)
+     ResultCheck(game.GetScore(), 300, t)
+}
+
 func RollMany(n int, pins int, game *Game) {
      for i := 0; i < n; i++ {
          game.Roll(pins)
